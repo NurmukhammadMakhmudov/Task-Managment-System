@@ -9,6 +9,7 @@ import org.example.taskmanagementsystem.model.Task;
 import org.example.taskmanagementsystem.service.CommentsService;
 import org.example.taskmanagementsystem.service.TasksService;
 import org.example.taskmanagementsystem.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,7 +21,7 @@ import java.util.List;
 @RequestMapping("/api/v1/assignee")
 @RequiredArgsConstructor
 public class AssigneeController {
-
+    @Autowired
     private final CommentsService  commentsService;
     private final TasksService tasksService;
     private final UserService userService;

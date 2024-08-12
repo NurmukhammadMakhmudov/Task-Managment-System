@@ -57,7 +57,6 @@ public class CommentsService {
 
     public CommentDTO toDTO(Comments comments) {
         return CommentDTO.builder()
-                .id(comments.getId())
                 .comment(comments.getComment())
                 .author(comments.getAuthors().getName())
                 .date(comments.getCreationDate())

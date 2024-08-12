@@ -61,7 +61,6 @@ public class UserService implements UserDetailsService {
 
     public TaskDTO fromTaskToDto(Task task) {
         return TaskDTO.builder()
-                .id(task.getId())
                 .title(task.getTitle())
                 .description(task.getDescription())
                 .priority(task.getPriority())

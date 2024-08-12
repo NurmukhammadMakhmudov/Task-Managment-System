@@ -1,6 +1,7 @@
 package org.example.taskmanagementsystem.controller;
 
 
+import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
 import org.example.taskmanagementsystem.dto.CommentDTO;
 import org.example.taskmanagementsystem.dto.TaskDTO;
@@ -10,6 +11,7 @@ import org.example.taskmanagementsystem.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +31,17 @@ public class AuthorController {
     }
 
     @PostMapping("create-task")
-    public ResponseEntity<TaskDTO> createTask(@AuthenticationPrincipal UserDetails userDetails, @RequestBody TaskDTO task) {
+    public ResponseEntity<TaskDTO> createTask(
+            @AuthenticationPrincipal UserDetails userDetails,
+            @RequestBody
+                    @Parameter(description = "Задача со все нужной информацией",
+                    example = "  \"title\": \"Тема\",\n" +
+                            "  \"description\": \"Описание\",\n" +
+                            "  \"status\": \"inProgress\",\n" +
+                            "  \"priority\": \"HIGH\",\n" +
+                            "  \"author\": \"Получается со токена\",\n" +
+                            "  \"assignee\": \"Почта исполнителя\"")
+            TaskDTO task) {
         return ResponseEntity.ok(tasksService.save(task, userDetails));
     }
     @PatchMapping("update-task/{id}")

@@ -3,7 +3,7 @@ package org.example.taskmanagementsystem.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.taskmanagementsystem.Enums.RolesType;
-import org.example.taskmanagementsystem.controller.RegisterRequest;
+import org.example.taskmanagementsystem.dto.RegisterRequest;
 import org.example.taskmanagementsystem.dto.AuthRequest;
 import org.example.taskmanagementsystem.dto.AuthResponse;
 import org.example.taskmanagementsystem.model.Users;
@@ -30,7 +30,7 @@ public class AuthService {
                 .lastName(request.getLastName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(RolesType.ASSIGNEE)
+                .role(request.getRole())
                 .build();
         if (usersRepository.findByEmail(user.getEmail()).isPresent()) {
          throw new UsernameNotFoundException("Username already exists");

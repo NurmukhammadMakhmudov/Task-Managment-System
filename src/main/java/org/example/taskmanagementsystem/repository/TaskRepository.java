@@ -7,6 +7,5 @@ import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    List<Task> findByAuthorEmail(String email);
-    List<Task> findByAssigneeEmail(String email);
+
 }

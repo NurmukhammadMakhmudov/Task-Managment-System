@@ -3,6 +3,7 @@ package org.example.taskmanagementsystem.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.taskmanagementsystem.dto.AuthRequest;
 import org.example.taskmanagementsystem.dto.AuthResponse;
+import org.example.taskmanagementsystem.dto.RegisterRequest;
 import org.example.taskmanagementsystem.service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthResponse> authenticateUser(@RequestBody AuthRequest   authRequest) {
+    public ResponseEntity<AuthResponse> authenticateUser(@RequestBody AuthRequest authRequest) {
 
         return ResponseEntity.ok(authService.authenticate(authRequest));
     }

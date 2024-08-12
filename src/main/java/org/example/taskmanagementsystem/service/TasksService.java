@@ -27,7 +27,8 @@ public class TasksService {
 
 
     public List<TaskDTO> getAllTasks() {
-        return taskRepository.findAll().stream().map(this::fromTaskToDto).collect(Collectors.toList());
+        List<Task> tasks = taskRepository.findAll();
+        return tasks.stream().map(this::fromTaskToDto).collect(Collectors.toList());
     }
 
     public Optional<Task> getTaskById(Long id) {
@@ -128,7 +129,6 @@ public class TasksService {
 
     public TaskDTO fromTaskToDto(Task task) {
         return TaskDTO.builder()
-                .id(task.getId())
                 .title(task.getTitle())
                 .description(task.getDescription())
                 .priority(task.getPriority())

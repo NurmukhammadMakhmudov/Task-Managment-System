@@ -1,5 +1,6 @@
 package org.example.taskmanagementsystem.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,10 +12,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Schema(description = "Исполнитель")
 public class AssigneeDTO {
 
-    private String authorName;
-    private String authorSurname;
-    private String authorEmail;
+    @Schema(description = "Имя Исполнителя")
+    private String assigneeName;
+    @Schema(description = "Фамилия Исполнителя")
+    private String assigneeSurname;
+    @Schema(description = "Почта")
+    private String assigneeEmail;
+    @Schema(description = "Задачи Исполнителя")
     private List<TaskDTO> assigneeTasksList;
 }
